@@ -1,0 +1,25 @@
+{
+  "name": "project_ajax_blog_backend",
+  "version": "1.0.0",
+  "description": "API for AJAX BLOG",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FunCodingPanda/Project_Ajax_Blog_backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FunCodingPanda/Project_Ajax_Blog_backend/issues"
+  },
+  "homepage": "https://github.com/FunCodingPanda/Project_Ajax_Blog_backend#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "uuid": "^3.2.1"
+  }
+}
