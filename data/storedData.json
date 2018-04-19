@@ -1,18 +1,1 @@
-
-[
-  {
-    "id": 1,
-    "title": "I like box Jellyfish",
-    "content": "They are dangerous, cute and also terribly delicious."
-  },
-  {
-    "id": 2,
-    "title": "Teddy Bears",
-    "content": "Teddy Bears are the best, they are sweet and they listen to all your problems."
-  },
-  {
-    "id": 3,
-    "title": "Hello Kitties",
-    "content": "I have a friend who owns everything Hello Kitty"
-  }
-]
+[{"id":1,"title":"I like box Jellyfish","content":"They are dangerous, cute and also terribly delicious."},{"id":2,"title":"Teddy Bears","content":"Teddy Bears are the best, they are sweet and they listen to all your problems."},{"id":"3","title":"Hello Kitties","content":"Woopedy woop"}]

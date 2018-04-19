@@ -1,4 +1,5 @@
-const data = require('../../data/db.json')
+const data = require('../../data/storedData.json')
+const helpers = require('../../data/helpers')
 const uuid = require('uuid/v4')
 
 create = (body) => {
@@ -16,7 +17,7 @@ create = (body) => {
 
     const blog = {
       id: uuid(),
-      title: body.title
+      title: body.title,
       content: body.content
     }
 
@@ -25,7 +26,7 @@ create = (body) => {
     array.push(blog)
     helpers.writeDatabase(array)
   }
-  return reponse 
+  return response 
 }
 
 getAll = (id) => { 
@@ -53,14 +54,14 @@ update = (id, body) => {
   if (!blog || !body) {
     return {
       status: 404, 
-      message: `blog was not found, name, bankName or description is/are not there or updated properly`,
+      message: `blog was not found, title or content is/are not there or updated properly`,
       errors: `Not found or required`
     }
   } else {
     const update = {
       id, 
-      name: body.title || blog.title,
-      bankName: body.content || blog.content,
+      title: body.title || blog.title,
+      content: body.content || blog.content,
     }
     const blogIndex = blogs.findIndex(a => a.id === blog.id)
     blogs[blogIndex] = update

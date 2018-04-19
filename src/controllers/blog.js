@@ -20,7 +20,7 @@ getAll = (req, res, next) => {
   if(blog.error) {
     return next ({
       status: 404, 
-      message: `Get all blogs denied`
+      message: `Get all blogs denied`,
       error: blog.error
     })
   }
@@ -43,32 +43,31 @@ getById = (req, res, next) => {
 }
 
 update = (req, res, next) => {
+  const id = req.params.id
+  const updatedBlog = model.update(id, req.body)
 
-const id = req.params.id
-  const updatedAccount = model.updateAccount(id, req.body)
-
-  if (updatedAccount.errors) {
+  if (updatedBlog.errors) {
     return next({
       status: 404,
       message: ``,
-      errors: updatedAccount.errors
+      errors: updatedBlog.errors
     })
-  } else if (updatedAccount.error) {
+  } else if (updatedBlog.error) {
     return next({
       status: 404,
       message: ``,
-      error: updatedAccount.error
+      error: updatedBlog.error
     })
   }
 
-  res.status(200).json({ account: updatedAccount })
+  res.status(200).json({ blog: updatedBlog })
 }
 
 deleteById = (req, res, next) => {
   const id = req.params.id
   const deleteById = model.deleteById(id)
 
-  if (.errors) {
+  if (deleteById.errors) {
     return next({
       status: 404,
       message: `Was not able to delete blog`,
@@ -80,5 +79,3 @@ deleteById = (req, res, next) => {
 }
 
 module.exports = { create, getAll, getById, update, deleteById }
-
-
