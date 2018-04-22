@@ -3,8 +3,6 @@ const helpers = require('../../data/helpers')
 const uuid = require('uuid/v4')
 
 create = (body) => {
-  const error = []
-
   let response 
   if (!body.title || !body.content) {
     

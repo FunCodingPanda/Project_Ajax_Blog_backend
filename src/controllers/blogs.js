@@ -1,4 +1,4 @@
-const model = require('../models/blog')
+const model = require('../models/blogs')
 
 create = (req, res, next) => {
   const blog = model.create(req.body)
@@ -15,16 +15,16 @@ create = (req, res, next) => {
 }
 
 getAll = (req, res, next) => {
-  const blog = model.getAll(req.query.all)
+  const blogs = model.getAll(req.query.all)
 
-  if(blog.error) {
+  if(blogs.error) {
     return next ({
       status: 404, 
       message: `Get all blogs denied`,
-      error: blog.error
+      error: blogs.error
     })
   }
-  res.status(200).json( { blog } )
+  res.status(200).json( { blogs } )
 }
 
 getById = (req, res, next) => {
@@ -51,12 +51,6 @@ update = (req, res, next) => {
       status: 404,
       message: ``,
       errors: updatedBlog.errors
-    })
-  } else if (updatedBlog.error) {
-    return next({
-      status: 404,
-      message: ``,
-      error: updatedBlog.error
     })
   }
 
