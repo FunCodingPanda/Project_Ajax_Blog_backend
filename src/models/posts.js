@@ -13,15 +13,15 @@ create = (body) => {
   } else {
     const array = helpers.readDatabase()
 
-    const blog = {
+    const post = {
       id: uuid(),
       title: body.title,
       content: body.content
     }
 
-    response = blog
+    response = post
 
-    array.push(blog)
+    array.push(post)
     helpers.writeDatabase(array)
   }
   return response 
@@ -32,55 +32,54 @@ getAll = (id) => {
 }
 
 getById = (id) => {
-  const blog = helpers.blog(id);
+  const post = helpers.post(id);
 
-  if (!blog) {
+  if (!post) {
     response = {
       status: 404, 
-      message: `Blog Id is not found`
+      message: `post Id is not found`
     }
     return response;
   } else {
-    return blog;
+    return post;
   }
 }
 
 update = (id, body) => {
-  const blog = helpers.blog(id)
-  const blogs = helpers.readDatabase()
+  const post = helpers.post(id)
+  const posts = helpers.readDatabase()
 
-  if (!blog || !body) {
+  if (!post || !body) {
     return {
       status: 404, 
-      message: `blog was not found, title or content is/are not there or updated properly`,
+      message: `post was not found, title or content is/are not there or updated properly`,
       errors: `Not found or required`
     }
   } else {
     const update = {
       id, 
-      title: body.title || blog.title,
-      content: body.content || blog.content,
+      title: body.title || post.title,
+      content: body.content || post.content,
     }
-    const blogIndex = blogs.findIndex(a => a.id === blog.id)
-    blogs[blogIndex] = update
-    helpers.writeDatabase(blogs)
+    const postIndex = posts.findIndex(a => a.id === post.id)
+    posts[postIndex] = update
+    helpers.writeDatabase(posts)
     return update
   }
 }
 
 deleteById = (id) => {
-  const blogs = helpers.readDatabase()
+  const posts = helpers.readDatabase()
   const errors = []
   
-  for (let i = 0; i < blogs.length; i++) {
-    if (blogs[i].id == id) {
-      const foundblog = blogs[i];
-      blogs.splice(i, 1);
-      helpers.writeDatabase(blogs)
-      return {message: `Blog is now deleted`}
+  for (let i = 0; i < posts.length; i++) {
+    if (posts[i].id == id) {
+      posts.splice(i, 1);
+      helpers.writeDatabase(posts)
+      return {message: `post is now deleted`}
     }
   }
-  errors.push('Could not delete blog')
+  errors.push('Could not delete post')
   return { errors }
 }
 

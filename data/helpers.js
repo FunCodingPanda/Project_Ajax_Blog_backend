@@ -5,12 +5,12 @@ readDatabase = () => {
   return JSON.parse(fs.readFileSync(path.join(__dirname, 'storedData.json'), 'utf-8'))
 }
 
-writeDatabase = (blogs) => {
-  return fs.writeFileSync(path.join(__dirname, 'storedData.json'), JSON.stringify(blogs)) 
+writeDatabase = (posts) => {
+  return fs.writeFileSync(path.join(__dirname, 'storedData.json'), JSON.stringify(posts)) 
 }
 
-blog = (id) => {
-  return readDatabase().find(blog => blog.id == id)
+post = (id) => {
+  return readDatabase().find(post => post.id == id)
 }
 
-module.exports = { readDatabase, writeDatabase, blog }
+module.exports = { readDatabase, writeDatabase, post }

@@ -11,8 +11,8 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors())
 
-const blogRoutes = require('./src/routes/blogs')
-app.use('/blogs', blogRoutes) 
+const postRoutes = require('./src/routes/posts')
+app.use('/posts', postRoutes) 
 
 app.use((err, req, res, next) => {
   console.error(err.stack) // Log the stacktrace of any errors that happen
